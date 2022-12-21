@@ -7,12 +7,13 @@ Voxum is a proximity voice chatting application for Minecraft Bedrock Edition. T
 
 ## How will/does it work?
 
-Voxum consists of 2 parts:
+Voxum consists of a few parts:
 
 | Part | Description | Link |
 |-------|------------| ----- |
 |The Voxum Client | The webclient that is used to voice chat with others. It's a bit like Discord where you join a channel and can talk to other people in your proximity. | https://github.com/Mohagames205/voxum-rewritten |
 | Voxum plugin | The plugin allows communication between the Minecraft server and the Voxum Client. It sends all necessary data to the client | https://github.com/Mohagames205/voxum |
+| Voxum Toolkit | This is a toolkit maintainers can use to easily test all features of Voxum | https://github.com/Mohagames205/voxum-toolkit |
 
 ![image](https://user-images.githubusercontent.com/40402787/208951578-66c9e1b7-68d6-45c9-9637-b68ce8b197a1.png)
 
@@ -43,7 +44,7 @@ There are a few things I want to achieve
 - [ ] Making clear documentation
 - [ ] A verification system for Minecraft players so they don't have to authenticate with any service
 - [ ] In-game indicator for if the player is using Voxum
-
+- [ ] Create a toolkit to make testing Voxum easier
 
 ## Screenshots
 
