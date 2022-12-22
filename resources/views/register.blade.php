@@ -12,7 +12,7 @@
 
     <style>
         #details {
-            display: flex;
+            display: none;
         }
 
         #connectionattempt {
@@ -20,6 +20,10 @@
         }
 
         #distance {
+            display: none;
+        }
+
+        #adminaccount {
             display: none;
         }
 
@@ -33,34 +37,30 @@
         <div id="image">
             <p id="logo">👋🏽</p>
         </div>
-        <div class="verification" id="details">
+        <div class="verification" id="no-verify">
             <div class="wrap-content">
                 <div class="banner">
                     <h1 class="logo"><span style="color: #8526fa;">Vox</span><span style="font-weight: 100">um</span><sup style="font-size: 19px;">α</sup></h1>
-                    <p>Cool! Let's get started with the <b>name</b> of your server.</p>
-                    <input type="text" placeholder="Servername e.g FlexCraft">
-                    <button class="glurple-button right" id="nxt-to-dist">Next</button>
+                    <p>Hey! Welcome to Voxum, the proximity voice chatting plugin for Minecraft Bedrock Edition. Before you can use Voxum we need to ask you a few things!</p>
+                    <p>Press the <b>button</b> below to get started! </p>
+                    <button class="glurple-button" id="start-setup">Start set-up</button>
                 </div>
             </div>
         </div>
-        <div class="verification" id="distance">
+        <div class="verification" id="adminaccount">
             <div class="wrap-content">
                 <div class="banner">
                     <h1 class="logo"><span style="color: #8526fa;">Vox</span><span style="font-weight: 100">um</span><sup style="font-size: 19px;">α</sup></h1>
-                    <p>Great, what should be the maximum <b>distance (in blocks)</b> that players can hear you?</p>
-                    <input type="number" placeholder="40"> blocks
-                    <button class="glurple-button right" id="nxt-to-conn">Next</button>
-                </div>
-            </div>
-        </div>
+                    <p>Let's begin with creating an admin account! With this account you can moderate users and adjust settings</p>
+                    <form method="POST" action="{{ route('register')}}">
+                        @csrf
+                        <input type="text" placeholder="Name" id="name" name="name">
+                        <input type="email" placeholder="E-mail" id="email" name="email">
+                        <input type="password" placeholder="Password" id="password" name="password">
+                        <input type="password" placeholder="Confirm password" id="password_confirmation" name="password_confirmation">
+                        <button class="glurple-button right"  type="submit">Create account</button>
+                    </form>
 
-        <div class="verification" id="connectionattempt">
-            <div class="wrap-content">
-                <div class="banner">
-                    <h1 class="logo"><span style="color: #8526fa;">Vox</span><span style="font-weight: 100">um</span><sup style="font-size: 19px;">α</sup></h1>
-                    <p>Cool! Lets <b>verify</b> that your plugin is configured correctly. Start your Minecraft server and join the server, if the plugin is set-up correctly i'll be able to detect it!</p>
-                    <p>Waiting for verification...</p>
-                    <button class="glurple-button right" id="start-setup">Next</button>
                 </div>
             </div>
         </div>
@@ -70,6 +70,8 @@
 
 
 <script>
+    const setupButton = document.getElementById("start-setup");
+    const adminNextButton = document.getElementById("nxt-to-details");
     const detailsNextButton = document.getElementById("nxt-to-dist");
     const distanceNextButton = document.getElementById("nxt-to-conn");
 
@@ -80,6 +82,17 @@
     const distanceBlock = document.getElementById("distance");
     const connectionBlock = document.getElementById("connectionattempt");
 
+
+
+    setupButton.onclick = () => {
+        noVerifyBlock.style.display = "none";
+        createUserBlock.style.display = "flex";
+    }
+
+    adminNextButton.onclick = () => {
+        createUserBlock.style.display = "none";
+        detailsBlock.style.display = "flex";
+    }
 
     detailsNextButton.onclick = () => {
         detailsBlock.style.display = "none";
