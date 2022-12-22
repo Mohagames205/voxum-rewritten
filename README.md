@@ -8,11 +8,11 @@ Voxum is a proximity voice chatting application for Minecraft Bedrock Edition. T
 ## Dependencies
 Voxum has been built on some awesome existing software:
 * Laravel framework
-    * **[Laravel Breeze](https://github.com/laravel/breeze)** for authentication
-    * **[Laravel Echo](https://github.com/laravel/echo)** for integration with **Laravel Websockets** 
-* **[Laravel WebSockets](https://github.com/beyondcode/laravel-websockets)** for the communication between the backend and the frontend
-* **[PeerJS](https://github.com/peers/peerjs)** simple wrapper for WebRTC
-* **[Golileo](https://github.com/GalactixPE/Golileo) for saving player skins in a centralized system
+    * [Laravel Breeze](https://github.com/laravel/breeze) for authentication
+    * [Laravel Echo](https://github.com/laravel/echo) for integration with **Laravel Websockets** 
+* [Laravel WebSockets](https://github.com/beyondcode/laravel-websockets) for the communication between the backend and the frontend
+* [PeerJS](https://github.com/peers/peerjs) simple wrapper for WebRTC
+* [Golileo](https://github.com/GalactixPE/Golileo) for saving player skins in a centralized system
 
 ## How will/does it work?
 
