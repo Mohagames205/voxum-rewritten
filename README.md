@@ -1,66 +1,65 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Voxum client (indev)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project is **not done** and doesn't work yet! Wait until further notice!
 
-## About Laravel
+## What is Voxum?
+Voxum is a proximity voice chatting application for Minecraft Bedrock Edition. This plugin allows you to enhance your gameplay!
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Dependencies
+Voxum has been built on some awesome existing software:
+* Laravel 9.43
+    * **[Laravel Breeze](https://github.com/laravel/breeze)** for authentication
+    * **[Laravel Echo](https://github.com/laravel/echo)** for integration with **Laravel Websockets** 
+* **[Laravel WebSockets](https://github.com/beyondcode/laravel-websockets)** for the communication between the backend and the frontend
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## How will/does it work?
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Voxum consists of a few parts:
 
-## Learning Laravel
+| Name | Description | Link |
+|-------------|------------| ----- |
+| Voxum Client | The webclient that is used to voice chat with others. It's a bit like Discord where you join a channel and can talk to other people in your proximity. | https://github.com/Mohagames205/voxum-rewritten |
+| Voxum plugin | The plugin allows communication between the Minecraft server and the Voxum Client. It sends all necessary data to the client | https://github.com/Mohagames205/voxum |
+| Voxum Toolkit | This is a toolkit maintainers can use to easily test all features of Voxum | https://github.com/Mohagames205/voxum-toolkit |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![image](https://user-images.githubusercontent.com/40402787/208951578-66c9e1b7-68d6-45c9-9637-b68ce8b197a1.png)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Development
+> ⚠️ WARNING: the webapp is NOT YET FUNCTIONAL!
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+You can try this **non-functional** demo by cloning this repository:
+```
+git clone https://github.com/Mohagames205/voxum-rewritten.git 
+```
 
-## Laravel Sponsors
+Installing all the composer dependencies using
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```
+composer install
+```
 
-### Premium Partners
+Serving the application using the included development webserver
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```
+php artisan serve
+```
 
-## Contributing
+## Roadmap
+There are a few things I want to achieve
+- [ ] Making proximity voice chatting functional
+- [ ] Create an administration panel to manage the Voxum instance
+- [ ] Making clear documentation
+- [ ] A verification system for Minecraft players so they don't have to authenticate with any service
+- [ ] In-game indicator for if the player is using Voxum
+- [ ] Create a toolkit to make testing Voxum easier
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Screenshots
 
-## Code of Conduct
+> The Voxum instance has not been set-up yet
+![image](https://user-images.githubusercontent.com/40402787/208948138-7f3a92b8-5c40-4715-a9c6-612451fe4999.png)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+> Set-up page for a new instance
+![image](https://user-images.githubusercontent.com/40402787/208948047-f7fc4579-aaa7-4cd6-b6f1-e13917d31fea.png)
+![image](https://user-images.githubusercontent.com/40402787/208948096-fda63712-8db5-4c16-8052-6b597ef4cc38.png)
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
