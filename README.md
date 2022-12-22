@@ -34,14 +34,31 @@ You can try this **non-functional** demo by cloning this repository:
 git clone https://github.com/Mohagames205/voxum-rewritten.git 
 ```
 
-Installing all the composer dependencies using
-
+Install all dependencies
 ```
 composer install
+
+npm install
+
+npm install peer -g
 ```
 
-Serving the application using the included development webserver
+Start Vite to enable on the fly asset compilation
+```
+npm run dev
+```
 
+Start the WebSocket server
+```
+php artisan websocket:serve
+```
+
+Start the PeerJS server on port `3000`
+```
+peerjs --port=3000
+```
+
+Serve the application using the included development webserver
 ```
 php artisan serve
 ```
