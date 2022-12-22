@@ -46,13 +46,13 @@ php artisan serve
 ```
 
 ## Roadmap
-There are a few things I want to achieve
+There are a few things I want to achieve (sorted from high to low priority): 
 - [ ] Making proximity voice chatting functional
+- [ ] A verification system for Minecraft players so they don't have to authenticate with Xbox-live
 - [ ] Create an administration panel to manage the Voxum instance
-- [ ] Making clear documentation
-- [ ] A verification system for Minecraft players so they don't have to authenticate with any service
-- [ ] In-game indicator for if the player is using Voxum
 - [ ] Create a toolkit to make testing Voxum easier
+- [ ] In-game indicator for if the player is using Voxum
+- [ ] Making clear documentation
 
 ## Screenshots
 
