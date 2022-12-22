@@ -27,6 +27,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/voicechat', function () {
+    return view('chat');
+})->middleware(['auth', 'verified'])->name('voicechat');
+
 Route::get("/setup", function (){
     return view("setup");
 })->middleware(["auth", "verified"])->name("setup");
