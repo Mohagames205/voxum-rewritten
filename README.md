@@ -5,6 +5,13 @@ This project is **not done** and doesn't work yet! Wait until further notice!
 ## What is Voxum?
 Voxum is a proximity voice chatting application for Minecraft Bedrock Edition. This plugin allows you to enhance your gameplay!
 
+## Dependencies
+Voxum has been built on some awesome existing software:
+* Laravel 9.43
+    * **[Laravel Breeze](https://github.com/laravel/breeze)** for authentication
+    * **[Laravel Echo](https://github.com/laravel/echo)** for integration with **Laravel Websockets** 
+* **[Laravel WebSockets](https://github.com/beyondcode/laravel-websockets)** for the communication between the backend and the frontend
+
 ## How will/does it work?
 
 Voxum consists of a few parts:
