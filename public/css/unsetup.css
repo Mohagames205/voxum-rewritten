@@ -124,9 +124,27 @@ section {
     height: 100%;
 }
 
+#register-form-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
 
+#register-form-layout input {
+    width: unset;
+}
 
-input[type=text], input[type=email], input[type=password] {
+input[type=number] {
+    margin-top: 20px;
+    background-color: var(--input-bg-color);
+    padding: 15px 10px 15px 10px;
+    border: 1px solid var(--input-border-color);
+    color: var(--input-font-color);
+    border-radius: 5px;
+    width: 50px;
+}
+
+input[type=text], input[type=email], input[type=password]{
     margin-top: 20px;
     background-color: var(--input-bg-color);
     padding: 15px 10px 15px 10px;

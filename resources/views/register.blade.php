@@ -27,6 +27,10 @@
             display: none;
         }
 
+        #register-form input {
+            width: 90%;
+        }
+
     </style>
 
 </head>
@@ -52,12 +56,31 @@
                 <div class="banner">
                     <h1 class="logo"><span style="color: #8526fa;">Vox</span><span style="font-weight: 100">um</span><sup style="font-size: 19px;">α</sup></h1>
                     <p>Let's begin with creating an admin account! With this account you can moderate users and adjust settings</p>
-                    <form method="POST" action="{{ route('register')}}">
+                    <form method="POST" action="{{ route('register')}}" id="register-form">
                         @csrf
-                        <input type="text" placeholder="Name" id="name" name="name">
-                        <input type="email" placeholder="E-mail" id="email" name="email">
-                        <input type="password" placeholder="Password" id="password" name="password">
-                        <input type="password" placeholder="Confirm password" id="password_confirmation" name="password_confirmation">
+                        <div id="register-form-layout">
+
+                            <div class="input-username">
+                                <input type="text" placeholder="Name" id="name" name="name">
+                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                            </div>
+
+                            <div class="input-email">
+                                <input type="email" placeholder="E-mail" id="email" name="email">
+                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            </div>
+
+                            <div class="input-password">
+                                <input type="password" placeholder="Password" id="password" name="password">
+                                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                            </div>
+
+                            <div class="input-password-confirm">
+                                <input type="password" placeholder="Confirm password" id="password_confirmation" name="password_confirmation">
+                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                            </div>
+
+                        </div>
                         <button class="glurple-button right"  type="submit">Create account</button>
                     </form>
 

@@ -38,7 +38,7 @@
                 <div class="banner">
                     <h1 class="logo"><span style="color: #8526fa;">Vox</span><span style="font-weight: 100">um</span><sup style="font-size: 19px;">α</sup></h1>
                     <p>Cool! Let's get started with the <b>name</b> of your server.</p>
-                    <input type="text" placeholder="Servername e.g FlexCraft">
+                    <input type="text" placeholder="Servername e.g FlexCraft" required autofocus>
                     <button class="glurple-button right" id="nxt-to-dist">Next</button>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <div class="banner">
                     <h1 class="logo"><span style="color: #8526fa;">Vox</span><span style="font-weight: 100">um</span><sup style="font-size: 19px;">α</sup></h1>
                     <p>Great, what should be the maximum <b>distance (in blocks)</b> that players can hear you?</p>
-                    <input type="number" placeholder="40"> blocks
+                    <input type="number" placeholder="40" required> blocks
                     <button class="glurple-button right" id="nxt-to-conn">Next</button>
                 </div>
             </div>
