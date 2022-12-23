@@ -7,10 +7,12 @@ Voxum is a proximity voice chatting application for Minecraft Bedrock Edition. T
 
 ## Dependencies
 Voxum has been built on some awesome existing software:
-* Laravel 9.43
-    * **[Laravel Breeze](https://github.com/laravel/breeze)** for authentication
-    * **[Laravel Echo](https://github.com/laravel/echo)** for integration with **Laravel Websockets** 
-* **[Laravel WebSockets](https://github.com/beyondcode/laravel-websockets)** for the communication between the backend and the frontend
+* Laravel framework
+    * [Laravel Breeze](https://github.com/laravel/breeze) for authentication
+    * [Laravel Echo](https://github.com/laravel/echo) for integration with **Laravel Websockets** 
+* [Laravel WebSockets](https://github.com/beyondcode/laravel-websockets) for the communication between the backend and the frontend
+* [PeerJS](https://github.com/peers/peerjs) simple wrapper for WebRTC
+* [Golileo](https://github.com/GalactixPE/Golileo) for saving player skins in a centralized system
 
 ## How will/does it work?
 
@@ -32,26 +34,43 @@ You can try this **non-functional** demo by cloning this repository:
 git clone https://github.com/Mohagames205/voxum-rewritten.git 
 ```
 
-Installing all the composer dependencies using
-
+Install all dependencies
 ```
 composer install
+
+npm install
+
+npm install peer -g
 ```
 
-Serving the application using the included development webserver
+Start Vite to enable on the fly asset compilation
+```
+npm run dev
+```
 
+Start the WebSocket server
+```
+php artisan websocket:serve
+```
+
+Start the PeerJS server on port `3000`
+```
+peerjs --port=3000
+```
+
+Serve the application using the included development webserver
 ```
 php artisan serve
 ```
 
 ## Roadmap
-There are a few things I want to achieve
+There are a few things I want to achieve (sorted from high to low priority): 
 - [ ] Making proximity voice chatting functional
+- [ ] A verification system for Minecraft players so they don't have to authenticate with Xbox-live
 - [ ] Create an administration panel to manage the Voxum instance
-- [ ] Making clear documentation
-- [ ] A verification system for Minecraft players so they don't have to authenticate with any service
-- [ ] In-game indicator for if the player is using Voxum
 - [ ] Create a toolkit to make testing Voxum easier
+- [ ] In-game indicator for if the player is using Voxum
+- [ ] Making clear documentation
 
 ## Screenshots
 
