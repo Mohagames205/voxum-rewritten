@@ -14,6 +14,8 @@
                         <x-primary-button type="submit">Join</x-primary-button>
                     </form>
 
+                    <div id="audio-elements"></div>
+
                 </div>
             </div>
         </div>
@@ -59,12 +61,35 @@
         peer.on("call", call => {
             call.answer(stream)
             console.log("call answered from " + call.peer)
+
+            call.on("stream", stream => {
+
+                // add the audio element
+                const audio = document.createElement('audio');
+                document.getElementById("audio-elements").appendChild(audio);
+
+                audio.srcObject = stream;
+                audio.onloadedmetadata = () => {
+                    audio.play();
+                }
+
+            })
         });
 
         // listen for when a user joins the room, when this happens the user should be called!
         Echo.join(`mainroom`)
             .listenForWhisper('joined-room', (e) => {
-                setTimeout(() => peer.call(e.username, stream), 1500)
+                setTimeout(() => {
+                    const call = peer.call(e.username, stream)
+                    // add the audio element
+                    const audio = document.createElement('audio');
+                    document.getElementById("audio-elements").appendChild(audio);
+
+                    audio.srcObject = stream;
+                    audio.onloadedmetadata = () => {
+                        audio.play();
+                    }
+                }, 1500)
                 console.log("user has joined room... calling peer: " + e.username)
             });
 
