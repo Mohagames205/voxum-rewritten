@@ -23,6 +23,10 @@ Route::get("/notsetup", function() {
     return view("notsetup");
 })->name("notsetup");
 
+Route::get("verify", function () {
+    return view("verify");
+})->name("verify");
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
