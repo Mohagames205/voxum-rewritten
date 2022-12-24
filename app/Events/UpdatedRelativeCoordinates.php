@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserJoinedRoom implements ShouldBroadcast
+class UpdatedRelativeCoordinates
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -19,7 +19,7 @@ class UserJoinedRoom implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct(public string $message)
+    public function __construct(public array $coordinates)
     {
         //
     }
@@ -27,7 +27,7 @@ class UserJoinedRoom implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel
+     * @return \Illuminate\Broadcasting\Channel|array
      */
     public function broadcastOn()
     {
