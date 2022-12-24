@@ -11,6 +11,7 @@ Voxum has been built on some awesome existing software:
     * [Laravel Breeze](https://github.com/laravel/breeze) for authentication
     * [Laravel Echo](https://github.com/laravel/echo) for integration with **Laravel Websockets** 
 * [Laravel WebSockets](https://github.com/beyondcode/laravel-websockets) for the communication between the backend and the frontend
+* [Redis](https://redis.io/) Pub/Sub to transfer the data from the Minecraft Server to the Laravel server 
 * [PeerJS](https://github.com/peers/peerjs) simple wrapper for WebRTC
 * [Golileo](https://github.com/GalactixPE/Golileo) for saving player skins in a centralized system
 
@@ -27,7 +28,7 @@ Voxum consists of a few parts:
 ![image](https://user-images.githubusercontent.com/40402787/208951578-66c9e1b7-68d6-45c9-9637-b68ce8b197a1.png)
 
 ## Development
-> ⚠️ WARNING: the webapp is NOT YET FUNCTIONAL!
+> ⚠️ WARNING: the webapp is NOT YET FUNCTIONAL! An easier method to deploy this will be made soon
 
 You can try this **non-functional** demo by cloning this repository:
 ```
