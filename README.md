@@ -54,6 +54,11 @@ Start the WebSocket server
 php artisan websocket:serve
 ```
 
+Start the Redis subscription service
+```
+php artisan redis:subscribe
+```
+
 Start the PeerJS server on port `3000`
 ```
 peerjs --port=3000
