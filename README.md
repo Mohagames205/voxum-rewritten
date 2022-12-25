@@ -25,10 +25,14 @@ Voxum consists of a few parts:
 | Voxum plugin | The plugin allows communication between the Minecraft server and the Voxum Client. It sends all necessary data to the client | https://github.com/Mohagames205/voxum |
 | Voxum Toolkit | This is a toolkit maintainers can use to easily test all features of Voxum | https://github.com/Mohagames205/voxum-toolkit |
 
-![image](https://user-images.githubusercontent.com/40402787/208951578-66c9e1b7-68d6-45c9-9637-b68ce8b197a1.png)
+## Diagram
+
+![image](https://user-images.githubusercontent.com/40402787/209481280-027c2c4a-6fff-4f18-b7a9-0bbc5f5da591.png)
+
 
 ## Development
-> ⚠️ WARNING: the webapp is NOT YET FUNCTIONAL! An easier method to deploy this will be made soon
+> ⚠️ WARNING: the webapp is NOT YET FUNCTIONAL! An easier method to deploy this will be made soon!
+
 
 You can try this **non-functional** demo by cloning this repository:
 ```
