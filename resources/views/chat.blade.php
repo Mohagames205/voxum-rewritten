@@ -21,12 +21,7 @@
     <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
 
     <script type="module">
-        const userList = document.getElementById("user-list");
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-
         const peerUsers = {}
-        const socketUsers = {}
 
         var peerOptions = {
             host: "127.0.0.1",
@@ -135,10 +130,6 @@
 
             document.getElementById("user-list").append(userElement);
 
-            audio.srcObject = stream;
-            audio.onloadedmetadata = () => {
-                audio.play();
-            }
         }
 
 
