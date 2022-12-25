@@ -32,7 +32,7 @@ class RedisSubscribe extends Command
     public function handle()
     {
         Redis::subscribe(['coordinate-channel'], function ($coordinates) {
-            UpdatedRelativeCoordinates::dispatch($coordinates);
+            UpdatedRelativeCoordinates::dispatch([$coordinates]);
         });
     }
 }

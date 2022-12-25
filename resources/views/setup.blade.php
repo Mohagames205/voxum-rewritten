@@ -76,7 +76,7 @@
 
     const noVerifyBlock = document.getElementById("no-verify");
     const createUserBlock = document.getElementById("adminaccount");
-    const detailsBlock = document.getElementById("details");
+    const detailsBlock = document.getElementById("detai ls");
     const distanceBlock = document.getElementById("distance");
     const connectionBlock = document.getElementById("connectionattempt");
 

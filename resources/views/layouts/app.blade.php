@@ -32,13 +32,4 @@
             </main>
         </div>
     </body>
-
-    <script type="module">
-
-        Echo.join('mainroom')
-            .listen('UpdatedRelativeCoordinates', (event) => {
-                console.log(event.message)
-            })
-
-    </script>
 </html>

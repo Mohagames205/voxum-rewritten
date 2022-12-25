@@ -9,12 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form id="join-chatroom">
-                        <x-text-input type="text" placeholder="Username" id="username" required autofocus/>
-                        <x-primary-button type="submit">Join</x-primary-button>
-                    </form>
 
                     <div id="audio-elements"></div>
+                    <div id="user-list"></div>
 
                 </div>
             </div>
@@ -24,10 +21,9 @@
     <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
 
     <script type="module">
-        const joinChatRoom = document.getElementById("join-chatroom");
+        const userList = document.getElementById("user-list");
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
-
 
         var peerOptions = {
             host: "127.0.0.1",
@@ -44,13 +40,9 @@
         const username = urlParams.get('username');
         const peer = new Peer(username, peerOptions);
 
-        // peer has connected to peerjs server --> whisper to all others that a user has joined!
-        peer.on("open", (id) => {
-            console.log("peer js has opened!")
-            // the user joined the voxum room of the server, dispatch to all other clients!
-            Echo.join(`mainroom`)
-                .whisper(`joined-room`, {username: id})
-        })
+
+        // self has connected to peerjs
+        peer.on("open", selfHasJoinedRoom)
 
         const stream = await navigator.mediaDevices.getUserMedia({
             video: false,
@@ -58,12 +50,47 @@
         });
 
         // when we get called by a user who joins the room, answer the call with our stream
-        peer.on("call", call => {
+        peer.on("call", handlePeerCall);
+
+        // listen for when a user joins the room, when this happens the user should be called!
+        Echo.join(`mainroom`)
+            .listenForWhisper('joined-room', peerJoinedRoom);
+
+        // handles incoming peer call
+        // sends our own stream to the calling user
+        // dispatches the stream of the user
+        function handlePeerCall(call) {
             call.answer(stream)
             console.log("call answered from " + call.peer)
 
-            call.on("stream", stream => {
+            call.on("stream", handleRemoteStreamRequest);
+        }
 
+        // handles incoming stream of other users
+        function handleRemoteStreamRequest(stream) {
+            // add the audio element
+            const audio = document.createElement('audio');
+            document.getElementById("audio-elements").appendChild(audio);
+
+            audio.srcObject = stream;
+            audio.onloadedmetadata = () => {
+                audio.play();
+            }
+        }
+
+        // is called when this user has joined the room
+        function selfHasJoinedRoom(id) {
+            // peer has connected to peerjs server --> whisper to all others that a user has joined!
+            console.log("self has joined the room with id" + id)
+            Echo.join(`mainroom`)
+                .whisper(`joined-room`, {username: id})
+        }
+
+        // is called when someone else joins the room
+        function peerJoinedRoom(e) {
+            console.log("peer has joined the room!")
+            setTimeout(() => {
+                const call = peer.call(e.username, stream)
                 // add the audio element
                 const audio = document.createElement('audio');
                 document.getElementById("audio-elements").appendChild(audio);
@@ -72,26 +99,9 @@
                 audio.onloadedmetadata = () => {
                     audio.play();
                 }
-
-            })
-        });
-
-        // listen for when a user joins the room, when this happens the user should be called!
-        Echo.join(`mainroom`)
-            .listenForWhisper('joined-room', (e) => {
-                setTimeout(() => {
-                    const call = peer.call(e.username, stream)
-                    // add the audio element
-                    const audio = document.createElement('audio');
-                    document.getElementById("audio-elements").appendChild(audio);
-
-                    audio.srcObject = stream;
-                    audio.onloadedmetadata = () => {
-                        audio.play();
-                    }
-                }, 1500)
-                console.log("user has joined room... calling peer: " + e.username)
-            });
+            }, 1500)
+            console.log("user has joined room... calling peer: " + e.username)
+        }
 
 
     </script>
