@@ -25,6 +25,9 @@
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
 
+        const peerUsers = {}
+        const socketUsers = {}
+
         var peerOptions = {
             host: "127.0.0.1",
             port: 3000,
@@ -37,8 +40,9 @@
                 ]}, debug: false
         }
 
-        const username = urlParams.get('username');
-        const peer = new Peer(username, peerOptions);
+        const username = "{!! auth()->user()->name !!}";
+
+        const peer =  new Peer(username, peerOptions);
 
 
         // self has connected to peerjs
@@ -54,7 +58,9 @@
 
         // listen for when a user joins the room, when this happens the user should be called!
         Echo.join(`mainroom`)
-            .listenForWhisper('joined-room', peerJoinedRoom);
+            .leaving(peerLeftRoom)
+            // do not use the default .joining() event, because we can only call the user whenever PeerJS is ready
+            .listenForWhisper('joined-room', peerJoinedRoom)
 
         // handles incoming peer call
         // sends our own stream to the calling user
@@ -63,14 +69,28 @@
             call.answer(stream)
             console.log("call answered from " + call.peer)
 
-            call.on("stream", handleRemoteStreamRequest);
+            call.on("stream", (stream) => handleRemoteStreamRequest(call.peer, stream));
         }
 
         // handles incoming stream of other users
-        function handleRemoteStreamRequest(stream) {
+        function handleRemoteStreamRequest(username, stream) {
             // add the audio element
             const audio = document.createElement('audio');
             document.getElementById("audio-elements").appendChild(audio);
+
+            audio.id = `${username}-audio`
+            audio.srcObject = stream;
+            audio.onloadedmetadata = () => {
+                audio.play();
+            };
+
+            // add the html element
+            const userElement = document.createElement("div");
+            userElement.className = "user";
+            userElement.id = `${username}-profile`
+            userElement.innerHTML = `<div class='skin'><img id=${username}img width='90px' height='90px' src='https://via.placeholder.com/90'/></div><div class='text'>${username}</div>`
+
+            document.getElementById("user-list").append(userElement);
 
             audio.srcObject = stream;
             audio.onloadedmetadata = () => {
@@ -82,8 +102,8 @@
         function selfHasJoinedRoom(id) {
             // peer has connected to peerjs server --> whisper to all others that a user has joined!
             console.log("self has joined the room with id" + id)
-            Echo.join(`mainroom`)
-                .whisper(`joined-room`, {username: id})
+            setTimeout(() => Echo.join(`mainroom`)
+                .whisper(`joined-room`, {username: id}), 1500)
         }
 
         // is called when someone else joins the room
@@ -91,16 +111,38 @@
             console.log("peer has joined the room!")
             setTimeout(() => {
                 const call = peer.call(e.username, stream)
+
+                peerUsers[e.username] = call
+
                 // add the audio element
                 const audio = document.createElement('audio');
                 document.getElementById("audio-elements").appendChild(audio);
 
+                audio.id = `${e.username}-audio`
                 audio.srcObject = stream;
                 audio.onloadedmetadata = () => {
                     audio.play();
-                }
+                };
+
+                // add the html element
+                const userElement = document.createElement("div");
+                userElement.className = "user";
+                userElement.id = `${e.username}-profile`
+                userElement.innerHTML = `<div class='skin'><img id=${e.username}img width='90px' height='90px' src='https://via.placeholder.com/90'/></div><div class='text'>${e.username}</div>`
+
+                document.getElementById("user-list").append(userElement);
+
             }, 1500)
             console.log("user has joined room... calling peer: " + e.username)
+        }
+
+
+        function peerLeftRoom(username) {
+
+            document.getElementById(`${username}-profile`).remove();
+            document.getElementById(`${username}-audio`).remove();
+
+            console.log(username + " left the room")
         }
 
 
