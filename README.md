@@ -29,10 +29,8 @@ Voxum consists of a few parts:
 
 ![image](https://user-images.githubusercontent.com/40402787/209481280-027c2c4a-6fff-4f18-b7a9-0bbc5f5da591.png)
 
-
 ## Development
-> ⚠️ WARNING: the webapp is NOT YET FUNCTIONAL! An easier method to deploy this will be made soon!
-
+> ⚠️ WARNING: the webapp is NOT YET FUNCTIONAL! An easier method to deploy this will be made soon!!
 
 You can try this **non-functional** demo by cloning this repository:
 ```
