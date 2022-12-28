@@ -1,6 +1,6 @@
 # Voxum client (indev)
 
-This project is **not done** and doesn't work yet! Wait until further notice!
+> **Warning**: This project is **not done** and doesn't work yet! Wait until further notice!
 
 ## What is Voxum?
 Voxum is a proximity voice chatting application for Minecraft Bedrock Edition. This plugin allows you to enhance your gameplay!
@@ -25,10 +25,18 @@ Voxum consists of a few parts:
 | Voxum plugin | The plugin allows communication between the Minecraft server and the Voxum Client. It sends all necessary data to the client | https://github.com/Mohagames205/voxum |
 | Voxum Toolkit | This is a toolkit maintainers can use to easily test all features of Voxum | https://github.com/Mohagames205/voxum-toolkit |
 
-![image](https://user-images.githubusercontent.com/40402787/208951578-66c9e1b7-68d6-45c9-9637-b68ce8b197a1.png)
+## Diagram
+
+![image](https://user-images.githubusercontent.com/40402787/209481280-027c2c4a-6fff-4f18-b7a9-0bbc5f5da591.png)
 
 ## Development
-> ⚠️ WARNING: the webapp is NOT YET FUNCTIONAL! An easier method to deploy this will be made soon
+>  **Warning**: the webapp is NOT YET FUNCTIONAL! An easier method to deploy this will be made soon!!
+
+### What you'll need
+* [A Redis server](https://redis.io/download/)
+* PHP >=8.0 
+* [NodeJS 18](https://nodejs.org/en/)
+* [PeerJS server 0.6.1](https://www.npmjs.com/package/peer)
 
 You can try this **non-functional** demo by cloning this repository:
 ```
