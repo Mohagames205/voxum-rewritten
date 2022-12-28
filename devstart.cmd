@@ -1,0 +1,5 @@
+start "Voxum | Laravel development server" cmd /k "php artisan serve"
+start "Voxum | Redis subscription" cmd /k "php artisan redis:subscribe"
+start "Voxum | Websocket" cmd /k "php artisan websocket:serve"
+start "Voxum | PeerServer" cmd /k "peerjs --port=3000"
+start "Voxum | Vite" cmd /k "npm run dev"
