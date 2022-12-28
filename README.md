@@ -52,6 +52,12 @@ npm install
 npm install peer -g
 ```
 
+
+<br>
+
+> **Note**<br>
+> If you're on Windows you can simply use `.\devstart.cmd` to start up all the services.
+
 Start Vite to enable on the fly asset compilation
 ```
 npm run dev
