@@ -132,7 +132,5 @@
 
         }
 
-
     </script>
-
 </x-app-layout>
