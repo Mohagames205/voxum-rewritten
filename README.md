@@ -32,6 +32,12 @@ Voxum consists of a few parts:
 ## Development
 >  **Warning**: the webapp is NOT YET FUNCTIONAL! An easier method to deploy this will be made soon!!
 
+### What you'll need
+* [A Redis server](https://redis.io/download/)
+* PHP >=8.0 
+* [NodeJS 18](https://nodejs.org/en/)
+* [PeerJS server 0.6.1](https://www.npmjs.com/package/peer)
+
 You can try this **non-functional** demo by cloning this repository:
 ```
 git clone https://github.com/Mohagames205/voxum-rewritten.git 
