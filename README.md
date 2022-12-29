@@ -13,7 +13,7 @@ Voxum has been built on some awesome existing software:
 * [Laravel WebSockets](https://github.com/beyondcode/laravel-websockets) for the communication between the backend and the frontend
 * [Redis](https://redis.io/) Pub/Sub to transfer the data from the Minecraft Server to the Laravel server 
 * [PeerJS](https://github.com/peers/peerjs) simple wrapper for WebRTC
-* [Golileo](https://github.com/GalactixPE/Golileo) for saving player skins in a centralized system
+* [Golileo](https://github.com/Mohagames205/Golileo) for saving player skins in a centralized system
 
 ## How will/does it work?
 
