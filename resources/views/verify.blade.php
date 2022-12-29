@@ -9,22 +9,19 @@
 
     <link rel="icon" type="image/x-icon" href="/cdn/staticimg/favicon.ico" />
 
+    <!-- Scripts -->
+    @vite(['resources/js/app.js'])
+
 
     <style>
-        #details {
+        #auth-done {
             display: none;
         }
 
-        #connectionattempt {
-            display: none;
-        }
-
-        #distance {
-            display: none;
-        }
-
-        #adminaccount {
-            display: none;
+        #welcometext {
+            font-weight: bolder;
+            color: #8526fa;
+            font-size: 25px;
         }
 
         #register-form input {
@@ -39,28 +36,40 @@
 <section>
     <div class="wrap">
         <div id="image">
-            <p id="logo">✅</p>
+            <img id="statusimage" src="img/loading.svg">
         </div>
         <div class="verification" id="no-verify">
             <div class="wrap-content">
                 <div class="banner">
                     <h1 class="logo"><span style="color: #8526fa;">Vox</span><span style="font-weight: 100">um</span><sup style="font-size: 19px;">α</sup></h1>
-                    <p>Hey, welcome to Voxum. Before you can use Voxum you'll need to verify your Minecraft Bedrock Edition account.</p>
-                    <p>Execute the <b>/askcode</b> command and enter the code you see.</p>
-                    <div class="input-username">
-                        <form method="GET">
-                            @csrf
-                            <input type="text" placeholder="Verification code" id="verifycode" name="verifycode" style="width: 97%;">
-                            <x-input-error :messages="$errors->get('verifycode')" class="mt-2" />
-                            <button type="submit" class="glurple-button" id="verifycode-button">Verify code</button>
-                        </form>
+                    <div id="need-auth">
+                        <p>Hey, welcome to Voxum. Before you can use Voxum you'll need to verify your Minecraft Bedrock Edition account.</p>
+                        <p>Please enter the following command in-game</p>
+                        <div class="command-block">
+                            /verify {{ $code }}
+                        </div>
                     </div>
-                </div>
+                    <div id="auth-done">
+                        <p id="welcometext"></p>
+                        <p>The verification was successful! Redirecting...</p>
+                    </div>
             </div>
+        </div>
         </div>
     </div>
 </section>
-<script>
+<script type="module">
+
+    Echo.channel("VERIFY_{!! $code !!}")
+        .listen("UserVerified", (e) => {
+            const username = e.username;
+            console.log(username)
+            document.getElementById("welcometext").innerText = `Welcome ${username}!`
+            document.getElementById("need-auth").style.display = "none";
+            document.getElementById("auth-done").style.display = "unset";
+            document.getElementById("image").innerHTML = `<p id=logo>🎉</p>`
+        })
+
 
 </script>
 </body>

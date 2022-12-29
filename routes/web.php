@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +24,7 @@ Route::get("/notsetup", function() {
     return view("notsetup");
 })->name("notsetup");
 
-Route::get("verify", function () {
-    return view("verify");
-})->name("verify");
+Route::get("verify", [VerificationController::class, "startVerification"])->name("verify");
 
 Route::get('/dashboard', function () {
     return view('dashboard');
