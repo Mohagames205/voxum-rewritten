@@ -1,9 +1,17 @@
 # Voxum client (indev)
+Voxum is a proximity voice chatting application for Minecraft Bedrock Edition. This plugin allows you to enhance your gameplay!
 
 > **Warning**: This project is **not done** and doesn't work yet! Wait until further notice!
 
 ## What is Voxum?
-Voxum is a proximity voice chatting application for Minecraft Bedrock Edition. This plugin allows you to enhance your gameplay!
+While playing Among Us with a few friends I discovered a very cool program called "CrewLink". It's a very cool way to add proximity voice chatting in Among Us. I liked the idea so much that I wanted to make an equivalent program, but for Minecraft Bedrock Edition.
+
+I'm a full-time student so I actually don't have a lot of time to work on this, so when I have time I work on the things that seem the most fun at the moment. So don't expect too much from this project =). I'm just trying having fun on this journey and create something cool on the way.
+
+## Things that helped me on this journey
+* StackOverflow <3
+* LaraCasts
+* ...
 
 ## Dependencies
 Voxum has been built on some awesome existing software:
