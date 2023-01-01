@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserVerified;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Str;
@@ -18,9 +19,18 @@ class VerificationController extends Controller
         return view("verify", ["code" => $randomCode]);
     }
 
-    public function setVerification()
+    public function postVerification(Request $request)
     {
 
+        $code = $request->get("code");
+        $username = $request->get("username");
+
+        if(Redis::get("VERIFY_" . $code) !== null) {
+            UserVerified::dispatch($username, $code);
+            return response(["is_correct" => true], 200);
+        }
+
+        return response(["is_correct" => false], 200);
     }
 
 

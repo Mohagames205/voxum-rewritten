@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VerificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redis;
@@ -19,9 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/verifycode', function (Request $request){
-    $username = $request->get("username");
-    $code = $request->get("verifycode");
-
-    return json_encode(["is_correct" => (Redis::get($username) == $code)]);
-});
+# remember api routers have the /api/ prefix!
+Route::post('/verifycode', [VerificationController::class, "postVerification"]);
