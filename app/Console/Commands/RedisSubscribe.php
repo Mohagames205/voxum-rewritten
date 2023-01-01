@@ -35,7 +35,6 @@ class RedisSubscribe extends Command
         Redis::subscribe(['coordinate-channel', 'verification'], function ($message, $channel) {
             match ($channel){
                 "coordinate-channel" => UpdatedRelativeCoordinates::dispatch([$message]),
-                "verification" => UserVerified::dispatch(json_decode($message, true)["username"], json_decode($message, true)["code"])
             };
         });
     }
