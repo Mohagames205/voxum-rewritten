@@ -1,4 +1,6 @@
 # Voxum client (indev)
+## Because of my exams, the develoment of voxum is paused until 3 February 2023
+
 Voxum is a proximity voice chatting application for Minecraft Bedrock Edition. This plugin allows you to enhance your gameplay!
 
 > **Warning**: This project is **not done** and doesn't work yet! Wait until further notice!
